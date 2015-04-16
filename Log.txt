@@ -1,0 +1,601 @@
+; Script 1
+;
+; Very basic testing of the simple search commands with a tiny DB.
+;
+; Specify boundaries of coordinate space:
+world	0794130W	0792630W	381500N	383000N
+
+
+GIS Program
+
+dbFile:		db.txt
+script:		Script01.txt
+log:		Log.txt
+--------------------------------------------------------------------------------
+
+Latitude/longitude values in index entries are shown as signed integers, in total seconds.
+
+World Boundaries:
+				138600
+		-286890				-285990
+				137700
+;
+; Import some data:
+Command 1:   import	VA_Monterey.txt
+
+Imported Features by Name: 63
+Longest Probe Sequence: 1
+Imported Locations: 63
+--------------------------------------------------------------------------------
+;
+; Check the location and name/state indices:
+Command 2:   debug	quad
+
+
+|
+|    |
+|    |----*
+|    |
+|    |
+|    |----[{79°37'7"W 38°17'40"N: [2346]}, {79°37'8"W 38°18'16"N: [7435]}]
+|    |
+|----@
+|    |
+|    |----[{79°34'39"W 38°19'5"N: [2612]}, {79°35'2"W 38°20'23"N: [3037]}, {79°35'23"W 38°20'47"N: [7309]}, {79°36'2"W 38°21'20"N: [8654]}]
+|    |
+|    |
+|    |----*
+|    |
+|
+|
+|    |
+|    |    |
+|    |    |----[{79°33'53"W 38°15'56"N: [953]}, {79°32'38"W 38°16'13"N: [1201]}, {79°32'56"W 38°16'12"N: [6560]}, {79°32'36"W 38°16'12"N: [8081]}]
+|    |    |
+|    |    |
+|    |    |----[{79°31'54"W 38°15'25"N: [2877]}, {79°30'24"W 38°15'8"N: [3720]}]
+|    |    |
+|    |----@
+|    |    |
+|    |    |    |
+|    |    |    |----[{79°31'44"W 38°17'7"N: [1361]}, {79°31'51"W 38°17'25"N: [4128]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----*
+|    |    |    |
+|    |    |----@
+|    |    |    |
+|    |    |    |----[{79°30'53"W 38°18'24"N: [1513]}, {79°30'19"W 38°18'11"N: [5669]}, {79°30'29"W 38°18'9"N: [7818]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----*
+|    |    |    |
+|    |    |
+|    |    |
+|    |    |----*
+|    |    |
+|    |
+|    |
+|    |----[{79°30'12"W 38°15'22"N: [4975]}, {79°30'5"W 38°15'31"N: [5259]}]
+|    |
+|----@
+|    |
+|    |----*
+|    |
+|    |
+|    |----[{79°33'58"W 38°19'2"N: [675]}, {79°31'9"W 38°21'48"N: [3593]}, {79°30'31"W 38°21'45"N: [4530]}, {79°32'54"W 38°20'12"N: [6434]}]
+|    |
+|
+@
+|
+|    |
+|    |    |
+|    |    |----*
+|    |    |
+|    |    |
+|    |    |----[{79°31'13"W 38°23'13"N: [6693]}]
+|    |    |
+|    |----@
+|    |    |
+|    |    |----*
+|    |    |
+|    |    |
+|    |    |    |
+|    |    |    |----[{79°33'36"W 38°24'53"N: [7069]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----[{79°32'25"W 38°25'12"N: [4696]}, {79°32'17"W 38°24'47"N: [8513]}]
+|    |    |    |
+|    |    |----@
+|    |    |    |
+|    |    |    |----[{79°32'33"W 38°25'52"N: [7188]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----[{79°33'12"W 38°26'7"N: [265]}, {79°33'13"W 38°26'10"N: [5991]}]
+|    |    |    |
+|    |    |
+|    |
+|    |
+|    |----[{79°30'13"W 38°25'2"N: [4409]}]
+|    |
+|----@
+|    |
+|    |----*
+|    |
+|    |
+|    |    |
+|    |    |----[{79°32'9"W 38°26'54"N: [4819]}]
+|    |    |
+|    |    |
+|    |    |    |
+|    |    |    |----[{79°31'41"W 38°27'4"N: [5419]}, {79°32'4"W 38°26'53"N: [5829]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----*
+|    |    |    |
+|    |    |----@
+|    |    |    |
+|    |    |    |----[{79°31'9"W 38°28'6"N: [4256]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----[{79°31'59"W 38°27'25"N: [3438]}, {79°32'1"W 38°27'18"N: [6142]}]
+|    |    |    |
+|    |    |
+|    |----@
+|    |    |
+|    |    |    |
+|    |    |    |----[{79°31'39"W 38°28'50"N: [2100]}, {79°31'56"W 38°28'12"N: [6940]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----[{79°30'31"W 38°28'56"N: [1822, 5102]}]
+|    |    |    |
+|    |    |----@
+|    |    |    |
+|    |    |    |----[{79°31'3"W 38°29'40"N: [2223]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----[{79°31'53"W 38°29'36"N: [1670]}]
+|    |    |    |
+|    |    |
+|    |    |
+|    |    |    |
+|    |    |    |----*
+|    |    |    |
+|    |    |    |
+|    |    |    |----*
+|    |    |    |
+|    |    |----@
+|    |    |    |
+|    |    |    |----[{79°32'59"W 38°30'0"N: [387]}, {79°32'22"W 38°29'53"N: [515]}, {79°32'38"W 38°29'51"N: [3162]}, {79°33'3"W 38°29'57"N: [7942]}]
+|    |    |    |
+|    |    |    |
+|    |    |    |----[{79°33'23"W 38°29'53"N: [1078]}, {79°33'10"W 38°29'53"N: [1946]}, {79°33'48"W 38°29'34"N: [6811]}]
+|    |    |    |
+|    |    |
+|    |
+|
+|
+|    |
+|    |----*
+|    |
+|    |
+|    |    |
+|    |    |----[{79°36'1"W 38°23'54"N: [6294]}]
+|    |    |
+|    |    |
+|    |    |----[{79°35'17"W 38°24'17"N: [7562]}]
+|    |    |
+|    |----@
+|    |    |
+|    |    |    |
+|    |    |    |----*
+|    |    |    |
+|    |    |    |
+|    |    |    |    |
+|    |    |    |    |    |
+|    |    |    |    |    |----[{79°34'44"W 38°24'26"N: [2473]}, {79°34'46"W 38°24'27"N: [8225]}]
+|    |    |    |    |    |
+|    |    |    |    |    |
+|    |    |    |    |    |----*
+|    |    |    |    |    |
+|    |    |    |    |----@
+|    |    |    |    |    |
+|    |    |    |    |    |----*
+|    |    |    |    |    |
+|    |    |    |    |    |
+|    |    |    |    |    |----[{79°34'50"W 38°24'44"N: [7682]}, {79°34'46"W 38°24'42"N: [8369]}, {79°34'51"W 38°24'42"N: [8792]}]
+|    |    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |----*
+|    |    |    |    |
+|    |    |    |----@
+|    |    |    |    |
+|    |    |    |    |----[{79°34'9"W 38°25'9"N: [797]}]
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |----*
+|    |    |    |    |
+|    |    |    |
+|    |    |----@
+|    |    |    |
+|    |    |    |----*
+|    |    |    |
+|    |    |    |
+|    |    |    |----[{79°35'0"W 38°25'41"N: [3879]}]
+|    |    |    |
+|    |    |
+|    |    |
+|    |    |----[{79°37'18"W 38°25'26"N: [2754]}, {79°36'22"W 38°25'15"N: [4001]}]
+|    |    |
+|    |
+|----@
+|    |
+|    |----[{79°36'52"W 38°28'52"N: [3314]}, {79°34'35"W 38°28'28"N: [5548]}]
+|    |
+|    |
+|    |----*
+|    |
+|
+
+
+--------------------------------------------------------------------------------
+Command 3:   debug	hash
+
+Slot		Name			Offset(s)
+3		Doe Hill:VA			[6693]
+4		Asbury Church:VA			[265]
+6		Bluegrass Valley:VA			[515]
+48		Seldom Seen Hollow:VA			[4530]
+95		Laurel Run:VA			[3438]
+100		Mount Carlyle:VA			[953]
+113		Town of Monterey:VA			[8792]
+161		Hannah Field Airport:VA			[6294]
+187		Monterey:VA			[7682]
+196		Smith Field:VA			[7818]
+206		Blue Grass School (historical):VA			[7942]
+234		Frank Run:VA			[1946]
+238		Jack Mountain:VA			[3037]
+267		New Hampden:VA			[6811]
+273		Ginseng Mountain:VA			[2100]
+281		Strait Creek:VA			[5102]
+297		Central Church:VA			[1078]
+301		Strait Creek School (historical):VA			[8513]
+331		Highland High School:VA			[2473]
+332		Burners Run:VA			[797]
+336		Possum Trot:VA			[6940]
+339		Simmons Run:VA			[4819]
+345		Hightown Church:VA			[2754]
+348		Key Run:VA			[3162]
+376		Little Doe Hill:VA			[3593]
+398		Swope Hollow:VA			[5259]
+412		Highland Wildlife Management Area:VA			[2612]
+413		Blue Grass:VA			[387]
+427		Trimble:VA			[7435]
+435		New Salem Church:VA			[4128]
+445		Lantz Mountain:VA			[3314]
+482		Bear Mountain:VA			[6434]
+504		Hamilton Chapel:VA			[2346]
+505		Claylick Hollow:VA			[1201]
+527		Wooden Run:VA			[6142]
+529		Clover Creek Presbyterian Church:VA			[8081]
+530		Crab Run:VA			[1361]
+531		Forks of Waters:VA			[1822]
+532		Union Chapel:VA			[5548]
+556		Vance Hollow:VA			[5669]
+569		Monterey District:VA			[8654]
+628		Clover Creek:VA			[6560]
+683		Trimble Knob:VA			[7562]
+706		Southall Chapel:VA			[4975]
+708		Miracle Ridge:VA			[3879]
+715		Thorny Bottom Church:VA			[5419]
+721		Buck Hill:VA			[675]
+728		Barren Rock:VA			[4409]
+760		Rich Hills:VA			[7069]
+772		Highland Elementary School:VA			[8225]
+802		Davis Run:VA			[1513]
+836		Monterey Methodist Episcopal Church:VA			[8369]
+905		Sounding Knob:VA			[7309]
+914		Peck Run:VA			[4256]
+933		Seybert Hills:VA			[7188]
+937		Monterey Mountain:VA			[4001]
+943		Seybert Chapel:VA			[4696]
+960		Meadow Draft:VA			[3720]
+965		West Strait Creek:VA			[5829]
+970		Elk Run:VA			[1670]
+976		Hupman Valley:VA			[2877]
+987		Gulf Mountain:VA			[2223]
+1015		White Run:VA			[5991]
+--------------------------------------------------------------------------------
+;
+; Let's try some variations of a single-match name/state search:
+Command 4:   what_is	-c	Trimble Knob	VA
+
+The number of records for Trimble Knob and VA was 1
+--------------------------------------------------------------------------------
+Command 5:   what_is	Trimble Knob	VA
+
+7562:	Highland	79°35'17"W 38°24'17"N
+--------------------------------------------------------------------------------
+Command 6:   what_is	-l	Trimble Knob	VA
+
+	Found matching record at offset 7562:
+Feature ID       : 1496326
+Feature Name     : Trimble Knob
+Feature Cat      : Summit
+State            : VA
+County           : Highland
+Latitude         : 38°24'17"N
+Longitude        : 79°35'17"W
+Elev in ft       : 3123
+USGS Quad        : Monterey
+Date Created     : 09/28/1979
+
+--------------------------------------------------------------------------------
+;
+; Let's check the buffer pool:
+Command 7:   debug	pool
+
+0			7562: Trimble Knob
+1			-
+2			-
+3			-
+4			-
+5			-
+6			-
+7			-
+8			-
+9			-
+10			-
+11			-
+12			-
+13			-
+14			-
+15			-
+16			-
+17			-
+18			-
+19			-
+
+--------------------------------------------------------------------------------
+;
+; Let's try some variations of a single-match location search:
+Command 8:   what_is_at	-c	382812N	0793156W
+
+The number of records for 0793156W, 382812N was 1
+--------------------------------------------------------------------------------
+Command 9:   what_is_at	382812N	0793156W
+
+	The following features were found at 0793156W, 382812N:
+6940:	Possum Trot	Highland	VA
+--------------------------------------------------------------------------------
+Command 10:   what_is_at	-l	382812N	0793156W
+
+	The following features were found at 0793156W, 382812N:
+Feature ID       : 1496110
+Feature Name     : Possum Trot
+Feature Cat      : Populated Place
+State            : VA
+County           : Highland
+Latitude         : 38°28'12"N
+Longitude        : 79°31'56"W
+Elev in ft       : 2520
+USGS Quad        : Monterey
+Date Created     : 09/28/1979
+
+--------------------------------------------------------------------------------
+;
+; Let's check the buffer pool:
+Command 11:   debug	pool
+
+0			6940: Possum Trot
+1			7562: Trimble Knob
+2			-
+3			-
+4			-
+5			-
+6			-
+7			-
+8			-
+9			-
+10			-
+11			-
+12			-
+13			-
+14			-
+15			-
+16			-
+17			-
+18			-
+19			-
+
+--------------------------------------------------------------------------------
+;
+; Let's try a few more name/state searches:
+Command 12:   what_is	-l	Swope Hollow	VA
+
+	Found matching record at offset 5259:
+Feature ID       : 1487758
+Feature Name     : Swope Hollow
+Feature Cat      : Valley
+State            : VA
+County           : Highland
+Latitude         : 38°15'31"N
+Longitude        : 79°30'5"W
+Src Long         : 38°16'19"N
+Src Lat          : 38°16'19"N
+Elev in ft       : 1775
+USGS Quad        : Monterey SE
+Date Created     : 09/28/1979
+
+--------------------------------------------------------------------------------
+Command 13:   what_is	-l	Possum Trot	VA
+
+	Found matching record at offset 6940:
+Feature ID       : 1496110
+Feature Name     : Possum Trot
+Feature Cat      : Populated Place
+State            : VA
+County           : Highland
+Latitude         : 38°28'12"N
+Longitude        : 79°31'56"W
+Elev in ft       : 2520
+USGS Quad        : Monterey
+Date Created     : 09/28/1979
+
+--------------------------------------------------------------------------------
+Command 14:   what_is	-l	Blue Grass	VA
+
+	Found matching record at offset 387:
+Feature ID       : 1481852
+Feature Name     : Blue Grass
+Feature Cat      : Populated Place
+State            : VA
+County           : Highland
+Latitude         : 38°30'0"N
+Longitude        : 79°32'59"W
+Elev in ft       : 2549
+USGS Quad        : Monterey
+Date Created     : 09/28/1979
+
+--------------------------------------------------------------------------------
+;
+; Let's check the buffer pool:
+Command 15:   debug	pool
+
+0			387: Blue Grass
+1			6940: Possum Trot
+2			5259: Swope Hollow
+3			7562: Trimble Knob
+4			-
+5			-
+6			-
+7			-
+8			-
+9			-
+10			-
+11			-
+12			-
+13			-
+14			-
+15			-
+16			-
+17			-
+18			-
+19			-
+
+--------------------------------------------------------------------------------
+;
+; Let's try a few more location searches:
+Command 16:   what_is_at	-l	382145N	0793031W
+
+	The following features were found at 0793031W, 382145N:
+Feature ID       : 1486995
+Feature Name     : Seldom Seen Hollow
+Feature Cat      : Valley
+State            : VA
+County           : Highland
+Latitude         : 38°21'45"N
+Longitude        : 79°30'31"W
+Src Long         : 38°22'27"N
+Src Lat          : 38°22'27"N
+Elev in ft       : 2461
+USGS Quad        : Monterey SE
+Date Created     : 09/28/1979
+
+--------------------------------------------------------------------------------
+Command 17:   what_is_at	-l	382442N	0793451W
+
+	The following features were found at 0793451W, 382442N:
+Feature ID       : 2391311
+Feature Name     : Town of Monterey
+Feature Cat      : Civil
+State            : VA
+County           : Highland
+Latitude         : 38°24'42"N
+Longitude        : 79°34'51"W
+Elev in ft       : 2900
+USGS Quad        : Monterey
+Date Created     : 02/19/2008
+
+--------------------------------------------------------------------------------
+Command 18:   what_is_at	-l	382607N	0793312W
+
+	The following features were found at 0793312W, 382607N:
+Feature ID       : 1481345
+Feature Name     : Asbury Church
+Feature Cat      : Church
+State            : VA
+County           : Highland
+Latitude         : 38°26'7"N
+Longitude        : 79°33'12"W
+Elev in ft       : 2684
+USGS Quad        : Monterey
+Date Created     : 09/28/1979
+
+--------------------------------------------------------------------------------
+;
+; Let's check the buffer pool:
+Command 19:   debug	pool
+
+0			265: Asbury Church
+1			8792: Town of Monterey
+2			4530: Seldom Seen Hollow
+3			387: Blue Grass
+4			6940: Possum Trot
+5			5259: Swope Hollow
+6			7562: Trimble Knob
+7			-
+8			-
+9			-
+10			-
+11			-
+12			-
+13			-
+14			-
+15			-
+16			-
+17			-
+18			-
+19			-
+
+--------------------------------------------------------------------------------
+;
+; Let's try a two-match location search:
+Command 20:   what_is_at	382856N	0793031W
+
+	The following features were found at 0793031W, 382856N:
+1822:	Forks of Waters	Highland	VA
+5102:	Strait Creek	Highland	VA
+--------------------------------------------------------------------------------
+;
+; Let's check the buffer pool:
+Command 21:   debug	pool
+
+0			5102: Strait Creek
+1			1822: Forks of Waters
+2			265: Asbury Church
+3			8792: Town of Monterey
+4			4530: Seldom Seen Hollow
+5			387: Blue Grass
+6			6940: Possum Trot
+7			5259: Swope Hollow
+8			7562: Trimble Knob
+9			-
+10			-
+11			-
+12			-
+13			-
+14			-
+15			-
+16			-
+17			-
+18			-
+19			-
+
+--------------------------------------------------------------------------------
+;
+; Exit
+Command 22:   quit	
+
+Terminating execution of commands.
